@@ -28,12 +28,13 @@ jobs:
           cache: 'npm'
 
       - name: Install dependencies
-        run: npm install
+        run: npm ci
 
       - name: Build
         run: npm run build
         env:
           NEXT_TELEMETRY_DISABLED: 1
+          NODE_OPTIONS: "--max-old-space-size=4096"
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
